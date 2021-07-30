@@ -12,24 +12,56 @@ class Calculator {
     }
 
     // determine the current operation's label
-    getAction() {}
-
+    getAction() {
+        if (this.operator == 'add') {
+            return 'adding';
+        } else if (this.operator == 'multiply') {
+            return 'multiplying';
+        } else if (this.operator == 'divide') {
+            return 'dividing';
+        } else if (this.operator == 'subtract') {
+            return 'subtracting'
+        }
+    }
     // performa a calculation based on the currently selected operation
-    operate() {}
+    operate() {
+        if (this.operator = 'multiply') {
+            this.multiply();
+        } else if (this.operator = 'add') {
+            this.add();
+        } else if (this.operator = 'subtract') {
+            this.subtract();
+        } else if (this.operator = 'divide') {
+            this.divide();
+        };
+    }
 
     attemptedDivideByZero = false;
 
     // perform addition operation
-    add() {}
+    add() {
+        return this.firstNumber + this.secondNumber;
+    }
 
     // perform subtraction operation
-    subtract() {}
+    subtract() {
+        return this.firstNumber - this.secondNumber;
+    }
 
     // perform multiplication operation
-    multiply() {}
+    multiply() {
+        return this.firstNumber * this.secondNumber;
+    }
 
     // perform divide operation
-    divide() {}
+    divide() {
+        if (secondNumber !== 0) {
+            return this.firstNumber / this.secondNumber;
+        } else {
+            attemptedDivideByZero = true;
+            console.log("Error! Cannot divide by zero.")
+        }
+    }    
 }
 
 //DO NOT TOUCH THIS LINE OF CODE//

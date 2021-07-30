@@ -1,1 +1,48 @@
 /* fill in styling here */
+#major {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 50vh;
+}
+
+#minor {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px 50px 25px 50px;
+}
+
+p {
+    align-self: center;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#ec {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+input[name="radio"] {
+    margin-left: 15px;
+}
+
+#equals {
+    margin-right: 15px;
+}
+
+.thing {
+    padding-top: 25px;
+}
