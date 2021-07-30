@@ -20,47 +20,47 @@ class Calculator {
         } else if (this.operator == 'divide') {
             return 'dividing';
         } else if (this.operator == 'subtract') {
-            return 'subtracting'
+            return 'subtracting';
         }
     }
     // performa a calculation based on the currently selected operation
     operate() {
-        if (this.operator = 'multiply') {
-            this.multiply();
-        } else if (this.operator = 'add') {
-            this.add();
-        } else if (this.operator = 'subtract') {
-            this.subtract();
-        } else if (this.operator = 'divide') {
-            this.divide();
+        if (this.operator == 'multiply') {
+            return this.multiply();
+        } else if (this.operator == 'add') {
+            return this.add();
+        } else if (this.operator == 'subtract') {
+            return this.subtract();
+        } else if (this.operator == 'divide') {
+            return this.divide();
         };
     }
-
+                        
     attemptedDivideByZero = false;
 
     // perform addition operation
     add() {
-        return this.firstNumber + this.secondNumber;
+        return parseInt(this.firstNumber) + parseInt(this.secondNumber);
     }
 
     // perform subtraction operation
     subtract() {
-        return this.firstNumber - this.secondNumber;
+        return parseInt(this.firstNumber) - parseInt(this.secondNumber);
     }
 
     // perform multiplication operation
     multiply() {
-        return this.firstNumber * this.secondNumber;
+        return parseInt(this.firstNumber) * parseInt(this.secondNumber);
     }
 
     // perform divide operation
     divide() {
-        if (secondNumber !== 0) {
-            return this.firstNumber / this.secondNumber;
+        if (this.secondNumber !== 0) {
+            return parseInt(this.firstNumber) / parseInt(this.secondNumber);
         } else {
             attemptedDivideByZero = true;
-            console.log("Error! Cannot divide by zero.")
-        }
+            console.log("Error! Cannot divide by zero.");
+        };
     }    
 }
 

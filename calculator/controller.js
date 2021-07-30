@@ -1,32 +1,56 @@
 // setup variables and get a calculator instance
 function CreateCalculator() {
-    let firstNumber = document.getElementById('fn');
-    firstNumber = firstNumber.textContent;
-    let secondNumber = document.getElementById('sn');
-    secondNumber = secondNumber.textContent;
+    let firstNumber = document.getElementById('fntext');
+    firstNumber = firstNumber.value;
+    let secondNumber = document.getElementById('sntext');
+    secondNumber = secondNumber.value;
+    let operator = getOperator();
+    let calc = new Calculator(firstNumber, secondNumber, operator);
+
+    return calc;
 }
 
 // perform a calculation when the operator button is clicked
 function calculate() {
-    value = operator.addEventListener('click', this.operate())
-    return value;
+    let calc = CreateCalculator();
+    let value = calc.operate();
+    let array = [value, calc];
+    return array;
 }
 
 /**
  * set the text in the result section of the UI
  * @param {*} value
  */
-function updateResultText(value) {
-    let minor = document.getElemetnById('minor');
-    let result = minor.appendChild('p');
-    result.textContent = `The result of ${getAction()} ${firstNumber} and ${secondNumber} is ${value}`;
-
+document.getElementById('equals').onclick = function updateResultText() {
+    let array = calculate();
+    let value = array[0];
+    let calc = array[1];
+    let major = document.getElementById('major');
+    let container = document.createElement('div');
+    container.setAttribute('id', 'container');
+    major.appendChild(container);
+    let result = document.createElement('p');
+    result.setAttribute('id', 'result');
+    result.innerText = `The result of ${calc.getAction()} ${calc.firstNumber} and ${calc.secondNumber} is ${value}`;
+    container.appendChild(result);
+    container.style.cssText = 'width: 100vw, display: flex; flex-direction: column; justify-content: center;';
+    result.style.cssText = 'text-align: center;'
 }
 
 // should clear input text values and focus the first number input
-function clearValues(firstNumber, secondNumber) {
-    firstNumber.textContent = '';
-    secondNumber.textContent = '';
+document.getElementById('clear').onclick = function clearValues() {
+    let firstNumber = document.getElementById('fntext');
+    firstNumber.value = '';
+    let secondNumber = document.getElementById('sntext');
+    secondNumber.value = '';
+    document.getElementById('result').remove();
+    document.getElementById('container').remove();
+    document.getElementById('add').checked = false;
+    document.getElementById('subtract').checked = false;
+    document.getElementById('multiply').checked = false;
+    document.getElementById('divide').checked = false;
+    firstNumber.focus();
 }
 
 /**
@@ -34,28 +58,17 @@ function clearValues(firstNumber, secondNumber) {
  * @returns Operators
  */
 function getOperator() {
-    operator = document.getElementsByName('radio');
+    let operator;
 
-    for (let i = 0; i < operator.length; i++) {
-        if (operator[i].checked) {
-            operator = opertaor[i].value;
-        };
+    if (document.getElementById('add').checked) {
+        operator = 'add';
+    } else if (document.getElementById('subtract').checked) {
+        operator = 'subtract';
+    } else if (document.getElementById('multiply').checked) {
+        operator = 'multiply';
+    } else if (document.getElementById('divide').checked) {
+        operator = 'divide';
     };
 
     return operator;
 }
-
-let equals = document.getElementById('equals');
-console.log(equals);
-console.log(document.getElementById('equals'))
-equals.addEventListener('click', CreateCalculator());
-
-console.log(firstNumber, secondNumber, operator)
-
-let calc = new Calculator(1, 1, 'add');
-
-console.log(calc);
-
-updateResultText(calculate());
-
-document.getElementById('clear').onclick() = clearValues();
